@@ -25,4 +25,17 @@ public class Enemy : MonoBehaviour
             transform.position = new(Random.Range(-8f, 8f), 7f, 0);
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+        else if (other.tag == "Laser")
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+        }
+
+    }
 }
