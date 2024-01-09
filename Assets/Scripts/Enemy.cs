@@ -25,15 +25,12 @@ public class Enemy : MonoBehaviour
             transform.position = new(Random.Range(-8f, 8f), 7f, 0);
         }
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
-            if (player != null)
-            {
-                player.Damage();
-            }
+            player?.Damage();
             Destroy(this.gameObject);
         }
         else if (other.tag == "Laser")
